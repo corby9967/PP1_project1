@@ -3,23 +3,45 @@ import java.util.Scanner;
 
 public class WordManager {
     Scanner s = new Scanner(System.in);
+    WordCRUD wordCRUD = new WordCRUD(s);
 
     public void start() {
-        WordCRUD wordCRUD = new WordCRUD(s);
+        wordCRUD.loadFile();
 
         while(true){
+
             int menu = selectMenu();
+
             if(menu == 0) {
                 System.out.println("프로그램 종료! 다음에 만나요~");
                 break;
             }
-            if(menu == 4){
-                // create
-                wordCRUD.addWord();
-            }
             else if(menu == 1){
                 // list
                 wordCRUD.listAll();
+            }
+            else if(menu == 2){
+                // list
+                wordCRUD.searchLevel();
+            }
+            else if(menu == 3){
+                // list
+                wordCRUD.searchWord();
+            }
+            else if(menu == 4){
+                // create
+                wordCRUD.addWord();
+            }
+            else if(menu == 5){
+                // update
+                wordCRUD.update();
+            }
+            else if(menu == 6){
+                // delete
+                wordCRUD.delete();
+            }
+            else if(menu == 7){
+                wordCRUD.saveFile();
             }
         }
     }
